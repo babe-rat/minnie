@@ -1,0 +1,16 @@
+{
+    "easycom": {
+        "^mi-(.*)": "@baberat/minnie/components/mi-$1/mi-$1.vue",
+        "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+    },
+    "pages": [
+        { "path": "pages/overview/index", "style": { "navigationStyle": "custom" } },
+        { "path": "pages/swiper/index", "style": { "navigationBarTitleText": "Swiper 轮播图" } }
+    ],
+    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "uni-app",
+        "navigationBarBackgroundColor": "#ffffff",
+        "backgroundColor": "#ffffff"
+    }
+}

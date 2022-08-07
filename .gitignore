@@ -1,0 +1,8 @@
+node_modules
+
+docs/.temp
+.umi
+packages/example/.automator
+
+dist
+site

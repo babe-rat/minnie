@@ -1,0 +1,14 @@
+{
+  "name": "@minnie/dumi-theme",
+  "version": "1.0.0",
+  "description": "dumi theme for minnie",
+  "files": [
+    "es",
+    "src"
+  ],
+  "sideEffects": [
+    "./**/*.less"
+  ],
+  "authors": [],
+  "license": "MIT"
+}

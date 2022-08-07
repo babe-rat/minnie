@@ -1,0 +1,8 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "vue3snippets.enable-compile-vue-file-on-did-save-code": false
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@minnie/cli",
+  "version": "1.0.0",
+  "bin": {
+    "mi-cli": "./bin/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "4.0.0",
+    "commander": "^9.2.0",
+    "fs-extra": "^10.1.0",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.lowerfirst": "^4.3.1",
+    "lodash.mergewith": "^4.6.2",
+    "lodash.upperfirst": "^4.3.1"
+  },
+  "devDependencies": {
+    "execa": "5.1.1",
+    "inquirer": "^8.2.4"
+  }
+}

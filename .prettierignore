@@ -1,0 +1,4 @@
+node_modules
+package.json
+
+.rancher-pipeline.yml

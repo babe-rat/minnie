@@ -1,0 +1,11 @@
+{
+  "name": "@baberat/minnie",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uview-ui": "2.0.31"
+  }
+}
