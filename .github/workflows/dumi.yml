@@ -33,11 +33,11 @@ jobs:
           pnpm install
           pnpm docs:build
           pnpm example:build
-          mv packages/example/dist dist/mobile
+          mv packages/example/dist site/mobile
       # 部署到 github pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # 推送的文件，既文档站点打包后的产物目录
-          publish_dir: ./dist
+          publish_dir: ./site
