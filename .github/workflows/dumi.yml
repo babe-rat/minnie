@@ -29,7 +29,7 @@ jobs:
       - name: Build
         # docs:build 对应文档的打包脚本
         run: |
-          npm install pnpm
+          npm install pnpm -g
           pnpm install
           pnpm docs:build
           pnpm example:build
