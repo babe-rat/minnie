@@ -1,5 +1,5 @@
 export default {
-    title: '@baberat/minnie',
+    title: 'Minnie',
     mfsu: {},
     mode: 'site',
     outputPath: 'site',

@@ -3,7 +3,7 @@
         <view class="logo">
             <h1 class="minnie-home__title">
                 <image class="minnie-home__image" src="/static/logo.png" />
-                <text class="minnie-home__text">@baberat/minnie</text>
+                <text class="minnie-home__text">Minnie</text>
             </h1>
             <h2 class="minnie-home__desc">基于 uView 封装的 uni-app 组件库</h2>
         </view>
