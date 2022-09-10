@@ -3,11 +3,16 @@ const inquirer = require('inquirer')
 const lowerFirst = require('lodash.lowerfirst')
 const upperFirst = require('lodash.upperfirst')
 const camelCase = require('lodash.camelcase')
-const { COMPONENTS_DOC_DIR, COMPONENTS_DIR, COMPONENT_PREFIX } = require('./shared/constant')
-const logger = require('./shared/logger')
-const generateComponent = require('./generate/generateComponent')
-const generateDoc = require('./generate/generateDoc')
-const generateExample = require('./generate/generateExample')
+const {
+    COMPONENTS_DOC_DIR,
+    COMPONENTS_DIR,
+    COMPONENT_PREFIX,
+    componentGroup,
+} = require('../shared/constant')
+const logger = require('../shared/logger')
+const generateComponent = require('../generate/generateComponent')
+const generateDoc = require('../generate/generateDoc')
+const generateExample = require('../generate/generateExample')
 
 function run(name) {
     inquirer
@@ -20,14 +25,21 @@ function run(name) {
                     return answer ? true : '必填项'
                 },
             },
+            {
+                name: 'group',
+                message: '所属分组',
+                type: 'list',
+                choices: componentGroup,
+                default: '基础组件',
+            },
         ])
         .then((answers) => {
-            const { desc } = answers
+            const { desc, group } = answers
             name = lowerFirst(name)
             // 组件全名
             const componentFullName = `${COMPONENT_PREFIX}-${name}`
             const componentName = upperFirst(camelCase(name))
-            const option = { name, desc, componentFullName, componentName }
+            const option = { name, desc, group, componentFullName, componentName }
             try {
                 // 生成 doc 文档
                 generateDoc(resolve(COMPONENTS_DOC_DIR, `${name}.md`), option)
