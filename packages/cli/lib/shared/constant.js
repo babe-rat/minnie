@@ -37,4 +37,5 @@ module.exports = {
     COMPONENTS_EXAMPLE_PAGES_OVERVIEW_SETTING,
     COMPONENT_PREFIX,
     componentGroup,
+    MINNIE_PACKAGES_DIR,
 }

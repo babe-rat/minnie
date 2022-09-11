@@ -4,11 +4,23 @@ const inquirer = require('inquirer')
 const semver = require('semver')
 const ora = require('ora')
 const { writeFileSync } = require('fs-extra')
-const { MINNIE_DIR } = require('../shared/constant')
+const { MINNIE_PACKAGES_DIR } = require('../shared/constant')
 const logger = require('../shared/logger')
 const changelog = require('./changelog')
 
 const releaseTypes = ['patch', 'minor', 'major', 'prepatch', 'preminor', 'premajor']
+
+async function choicePackage() {
+    const name = 'Please choice release package'
+    const ret = await inquirer.prompt([
+        {
+            name,
+            type: 'list',
+            choices: ['icons', 'minnie'],
+        },
+    ])
+    return ret[name]
+}
 
 async function isWorktreeEmpty() {
     const ret = await execa('git', ['status', '--porcelain'])
@@ -42,17 +54,18 @@ async function confirmVersion(currentVersion, expectVersion) {
     return ret[name]
 }
 
-function updateVersion(version) {
-    const file = resolve(MINNIE_DIR, 'package.json')
+function updateVersion(version, pkg) {
+    const file = resolve(MINNIE_PACKAGES_DIR, pkg, 'package.json')
     const config = require(file)
     config.version = version
     writeFileSync(file, JSON.stringify(config, null, 2))
     execa('pnpm', ['prettier', '--write', file])
 }
 
-async function publish(preRelease) {
+async function publish(pkg, preRelease) {
     const s = ora().start('Publishing packages')
-    const args = ['publish', '--no-git-checks', '--filter', '@baberat/minnie']
+    const packageName = require(resolve(MINNIE_PACKAGES_DIR, pkg, 'package.json')).name
+    const args = ['publish', '--no-git-checks', '--filter', packageName]
 
     preRelease && args.push('--tag', 'alpha')
     const ret = await execa('pnpm', args)
@@ -77,8 +90,8 @@ async function pushGit(version, remote = 'origin') {
 }
 
 async function release(cmd) {
-    const currentVersion = require(resolve(MINNIE_DIR, 'package.json')).version
-
+    const pkg = await choicePackage()
+    const currentVersion = require(resolve(MINNIE_PACKAGES_DIR, pkg, 'package.json')).version
     if (!currentVersion) {
         logger.error('Your package is missing the version field')
         return
@@ -98,9 +111,9 @@ async function release(cmd) {
         return
     }
 
-    updateVersion(expectVersion)
+    updateVersion(expectVersion, pkg)
 
-    await publish(isPreRelease)
+    await publish(pkg, isPreRelease)
 
     if (!isPreRelease) {
         await changelog()
