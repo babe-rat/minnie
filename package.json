@@ -6,6 +6,7 @@
     "dev": "concurrently \"pnpm docs:dev\"  \"pnpm example:dev\"",
     "docs:dev": "dumi dev",
     "docs:build": "dumi build",
+    "icons:build": "pnpm run -C packages/icons build",
     "example:dev": "pnpm run -C packages/example dev",
     "example:build": "pnpm run -C packages/example build",
     "gen": "mi-cli generate",
