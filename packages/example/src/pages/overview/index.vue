@@ -7,25 +7,39 @@
             </h1>
             <h2 class="minnie-home__desc">基于 uView 封装的 uni-app 组件库</h2>
         </view>
-        <view
-            class="minnie-home-nav"
-            v-for="route in routes"
-            :key="route.path"
-            @click="navigateTo(route.path)"
-        >
-            <view class="">{{ route.name }}</view>
-            <u-icon name="arrow-right" size="12"></u-icon>
+        <view v-for="route in routes" :key="route.key">
+            <view class="minnie-home-menu__title">{{ route.name }}</view>
+            <view
+                class="minnie-home-nav"
+                v-for="c in route.child"
+                :key="c.path"
+                @click="navigateTo(c.path)"
+            >
+                <view class="">{{ c.name }}</view>
+                <u-icon name="arrow-right" size="12"></u-icon>
+            </view>
         </view>
     </view>
 </template>
 
 <script>
+import groupBy from 'lodash.groupby'
 import routes from './routes'
+
+const groupedRoutes = groupBy(routes, 'group')
+const list = []
+Object.keys(groupedRoutes).forEach((key) => {
+    list.push({
+        key,
+        name: key,
+        child: groupedRoutes[key],
+    })
+})
 
 export default {
     data() {
         return {
-            routes,
+            routes: list,
             title: 'Hello',
         }
     },
@@ -83,6 +97,14 @@ export default {
         padding: 8px;
         color: #555;
         font-size: 14px;
+    }
+    &-menu__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        color: #454d64;
+        font-weight: 600;
     }
 }
 </style>

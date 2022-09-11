@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@baberat/minnie": "workspace:*",
+    "lodash.groupby": "^4.6.0",
     "uview-ui": "^2.0.33"
   }
 }

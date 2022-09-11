@@ -5,8 +5,21 @@
     },
     "pages": [
         { "path": "pages/overview/index", "style": { "navigationStyle": "custom" } },
-        { "path": "pages/swiper/index", "style": { "navigationBarTitleText": "Swiper 轮播图" } },
-        { "path": "pages/icon/index", "style": { "navigationBarTitleText": "Icon 图标" } }
+        {
+            "path": "pages/swiper/index",
+            "group": "布局组件",
+            "style": { "navigationBarTitleText": "Swiper 轮播图" }
+        },
+        {
+            "path": "pages/icon/index",
+            "group": "基础组件",
+            "style": { "navigationBarTitleText": "Icon 图标" }
+        },
+        {
+            "path": "pages/text/index",
+            "group": "基础组件",
+            "style": { "navigationBarTitleText": "Text 文本" }
+        }
     ],
     "globalStyle": {
         "navigationBarTextStyle": "black",

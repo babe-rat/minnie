@@ -1,9 +1,13 @@
 const { writeFileSync } = require('fs-extra')
+const { componentGroup } = require('../shared/constant')
 
-const generateDoc = (dest, { componentFullName, componentName, desc }) => {
+const generateDoc = (dest, { componentFullName, componentName, desc, group }) => {
     writeFileSync(
         dest,
         `---
+group:
+    title: ${group}
+    order: ${componentGroup.findIndex((g) => g === group) + 2}
 nav:
     title: 组件
 ---

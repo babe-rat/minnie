@@ -1,11 +1,14 @@
 const { mkdirSync, writeFileSync, readJSONSync, writeJSONSync } = require('fs-extra')
 const { resolve } = require('path')
 const mergeWith = require('lodash.mergewith')
+const groupBy = require('lodash.groupby')
+const sortBy = require('lodash.sortby')
 const execa = require('execa')
 const {
     COMPONENTS_EXAMPLE_PAGES_DIR,
     COMPONENTS_EXAMPLE_PAGES_JSON,
     COMPONENTS_EXAMPLE_PAGES_OVERVIEW_SETTING,
+    componentGroup,
 } = require('../shared/constant')
 
 function customizer(objValue, srcValue) {
@@ -14,7 +17,7 @@ function customizer(objValue, srcValue) {
     }
 }
 
-const generateExample = ({ name, componentName, desc, componentFullName }) => {
+const generateExample = ({ name, componentName, desc, componentFullName, group }) => {
     const PAGE_DIR = resolve(COMPONENTS_EXAMPLE_PAGES_DIR, name)
     mkdirSync(PAGE_DIR)
     writeFileSync(
@@ -34,6 +37,7 @@ const generateExample = ({ name, componentName, desc, componentFullName }) => {
             pages: [
                 {
                     path: `pages/${name}/index`,
+                    group,
                     style: {
                         navigationBarTitleText: `${componentName} ${desc}`,
                     },
@@ -44,17 +48,29 @@ const generateExample = ({ name, componentName, desc, componentFullName }) => {
     )
     writeJSONSync(COMPONENTS_EXAMPLE_PAGES_JSON, mergedPagesJson)
 
+    const groupedPages = groupBy(
+        mergedPagesJson.pages.filter(
+            (item) => !['pages/overview/index', 'pages/convert-props/index'].includes(item.path),
+        ),
+        'group',
+    )
+    const pages = componentGroup.reduce((result, value) => {
+        if (groupedPages[value]) {
+            return result.concat(sortBy(groupedPages[value], 'style.navigationBarTitleText'))
+        }
+        return result
+    }, [])
+
     writeFileSync(
         COMPONENTS_EXAMPLE_PAGES_OVERVIEW_SETTING,
         `const routes = [
-    ${mergedPagesJson.pages
-        .filter((item) => item.path !== 'pages/overview/index')
-        .map(
-            (page) => `{
+    ${pages.map(
+        (page) => `{
         name: '${page.style.navigationBarTitleText}',
-        path: '${page.path}'
+        path: '${page.path}',
+        group: '${page.group}',
     }`,
-        )}
+    )}
 ]
 export default routes
 `,

@@ -7,6 +7,8 @@
   "license": "ISC",
   "dependencies": {
     "@baberat/minnie-icons": "workspace:*",
+    "dayjs": "^1.11.5",
+    "lodash.round": "^4.0.4",
     "uview-ui": "2.0.31"
   }
 }
