@@ -19,6 +19,11 @@
             "path": "pages/text/index",
             "group": "基础组件",
             "style": { "navigationBarTitleText": "Text 文本" }
+        },
+        {
+            "path": "pages/custom-page/index",
+            "group": "布局组件",
+            "style": { "navigationBarTitleText": "CustomPage 页面", "navigationStyle": "custom" }
         }
     ],
     "globalStyle": {
