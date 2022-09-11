@@ -6,6 +6,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@baberat/minnie-icons": "workspace:*",
     "uview-ui": "2.0.31"
   }
 }

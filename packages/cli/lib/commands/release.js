@@ -52,7 +52,7 @@ function updateVersion(version) {
 
 async function publish(preRelease) {
     const s = ora().start('Publishing packages')
-    const args = ['publish', '--no-git-checks', '--filter', '@hamlet/uniapp']
+    const args = ['publish', '--no-git-checks', '--filter', '@baberat/minnie']
 
     preRelease && args.push('--tag', 'alpha')
     const ret = await execa('pnpm', args)

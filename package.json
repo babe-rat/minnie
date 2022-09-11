@@ -9,7 +9,10 @@
     "example:dev": "pnpm run -C packages/example dev",
     "example:build": "pnpm run -C packages/example build",
     "gen": "mi-cli generate",
-    "prettier": "prettier"
+    "prettier": "prettier",
+    "lint": "eslint ./packages/minnie --ext .js,.ts,.vue",
+    "release": "mi-cli release",
+    "changelog": "mi-cli changelog"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,7 @@
   "license": "ISC",
   "devDependencies": {
     "@baberat/eslint-config-beita": "^1.0.1",
+    "@baberat/minnie-icons": "workspace:*",
     "@minnie/cli": "workspace:*",
     "@minnie/dumi-theme": "workspace:*",
     "concurrently": "^7.3.0",

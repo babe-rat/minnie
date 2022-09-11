@@ -5,7 +5,8 @@
     },
     "pages": [
         { "path": "pages/overview/index", "style": { "navigationStyle": "custom" } },
-        { "path": "pages/swiper/index", "style": { "navigationBarTitleText": "Swiper 轮播图" } }
+        { "path": "pages/swiper/index", "style": { "navigationBarTitleText": "Swiper 轮播图" } },
+        { "path": "pages/icon/index", "style": { "navigationBarTitleText": "Icon 图标" } }
     ],
     "globalStyle": {
         "navigationBarTextStyle": "black",

@@ -1,0 +1,24 @@
+{
+  "name": "@baberat/minnie-icons",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "bin": {
+    "minnie-icons": "lib/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "minnie-icons build"
+  },
+  "keywords": ["icons"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.2.0",
+    "fs-extra": "^10.1.0",
+    "webfont": "^11.2.26"
+  }
+}
