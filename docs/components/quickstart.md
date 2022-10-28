@@ -97,6 +97,6 @@ Vue.use(uView)
 
 ```html
 <template>
-    <mi-swiper></mi-swiper>
+    <mi-text>我用十年青春,赴你最后之约</mi-text>
 </template>
 ```

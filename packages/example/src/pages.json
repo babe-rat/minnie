@@ -6,11 +6,6 @@
     "pages": [
         { "path": "pages/overview/index", "style": { "navigationStyle": "custom" } },
         {
-            "path": "pages/swiper/index",
-            "group": "布局组件",
-            "style": { "navigationBarTitleText": "Swiper 轮播图" }
-        },
-        {
             "path": "pages/icon/index",
             "group": "基础组件",
             "style": { "navigationBarTitleText": "Icon 图标" }

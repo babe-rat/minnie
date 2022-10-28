@@ -14,10 +14,5 @@ const routes = [
         path: 'pages/custom-page/index',
         group: '布局组件',
     },
-    {
-        name: 'Swiper 轮播图',
-        path: 'pages/swiper/index',
-        group: '布局组件',
-    },
 ]
 export default routes
