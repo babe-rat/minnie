@@ -8,7 +8,7 @@ let mobileOrigin = ''
 if (NODE_ENV === 'development') {
     mobileOrigin = 'http://localhost:8080'
 } else {
-    mobileOrigin = '/minnie/mobile'
+    mobileOrigin = '/minnie-uniapp/mobile'
 }
 // 首页
 const HOME = '/components/quickstart'
