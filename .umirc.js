@@ -3,8 +3,8 @@ export default {
     mfsu: {},
     mode: 'site',
     outputPath: 'site',
-    base: '/minnie',
-    publicPath: '/minnie/',
-    logo: '/minnie/logo.png',
-    favicon: '/minnie/logo.png',
+    base: '/minnie-uniapp',
+    publicPath: '/minnie-uniapp/',
+    logo: '/minnie-uniapp/logo.png',
+    favicon: '/minnie-uniapp/logo.png',
 }
